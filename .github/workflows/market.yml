@@ -20,8 +20,7 @@ jobs:
           -H 'Authorization: Bearer ${{ secrets.BOT_GITHUB_TOKEN }}' \
           -H 'Accept: application/vnd.github+json' \
           '${{ github.api_url }}/orgs/${{ env.owner }}/repos' \
-          -d '{"name":"${{ env.repo_name }}","private":false,"has_issues":false,"has_projects":false,"has_wiki":false}' \
-          -s -o '/dev/null'
+          -d '{"name":"${{ env.repo_name }}","private":false,"has_issues":false,"has_projects":false,"has_wiki":false}'
         shell: bash
       - uses: ghastore/mirror@main
         with:

@@ -1,6 +1,6 @@
 <?php
 
-namespace Z17DEV\UI_Base;
+namespace Z17\UI_Base;
 
 use Flarum\Extend;
 

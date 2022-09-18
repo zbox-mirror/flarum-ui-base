@@ -20,7 +20,7 @@ jobs:
       - name: "Create repository"
         shell: bash
         run: |
-          http="$( curl -s -o '/dev/null' -I -w '%{http_code}' -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' '${{ github.server_url }}/${{ env.owner }}/${{ env.repo_name }}' )"
+          http="$( curl -s -o '/dev/null' -I -w '%{http_code}' '${{ github.server_url }}/${{ env.owner }}/${{ env.repo_name }}' )"
           if [[ "${http}" -ne 200 ]]; then
             curl -X POST \
             -H 'Authorization: Bearer ${{ secrets.BOT_GITHUB_TOKEN }}' \

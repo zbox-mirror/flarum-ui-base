@@ -8,7 +8,7 @@ env:
 
 jobs:
   clone:
-    if: ${{ github.repository_owner == "zbox" }}
+    if: ${{ github.repository_owner == 'zbox' }}
     runs-on: ubuntu-latest
     name: "Clone"
     steps:

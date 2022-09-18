@@ -64,12 +64,12 @@ jobs:
       - name: "Create repository"
         shell: bash
         run: |
-          http="$( curl -s -o '/dev/null' -I -w '%{http_code}' -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' '${{ env.DOMAIN }}/${{ env.OWNER }}/${{ env.REPO_NAME }}' )"
+          http="$( curl -s -o '/dev/null' -I -w '%{http_code}' -A '${{ env.USER_AGENT }}' '${{ env.DOMAIN }}/${{ env.OWNER }}/${{ env.REPO_NAME }}' )"
           if [[ "${http}" -ne 200 ]]; then
             curl -X POST \
             -H 'Authorization: Bearer ${{ secrets.BOT_GITLAB_TOKEN }}' \
             -H 'Content-Type: application/json' \
-            -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' \
+            -A '${{ env.USER_AGENT }}' \
             '${{ env.DOMAIN }}/api/${{ env.VERSION }}/projects' \
             -d '{"name":"${{ env.REPO_NAME }}","path":"${{ env.REPO_NAME }}","namespace_id":"${{ env.NSID }}","visibility":"public","issues_access_level":"disabled","wiki_access_level":"disabled"}'
           fi
@@ -101,13 +101,13 @@ jobs:
       - name: "Create repository"
         shell: bash
         run: |
-          http="$( curl -s -o '/dev/null' -I -w '%{http_code}' -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' '${{ env.DOMAIN }}/${{ env.OWNER }}/${{ env.REPO_NAME }}' )"
+          http="$( curl -s -o '/dev/null' -I -w '%{http_code}' -A '${{ env.USER_AGENT }}' '${{ env.DOMAIN }}/${{ env.OWNER }}/${{ env.REPO_NAME }}' )"
           if [[ "${http}" -ne 200 ]]; then
             curl -X POST \
             -H 'Authorization: token ${{ secrets.BOT_CODEBERG_TOKEN }}' \
             -H 'Accept: application/json' \
             -H 'Content-Type: application/json' \
-            -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36' \
+            -A '${{ env.USER_AGENT }}' \
             '${{ env.DOMAIN }}/api/${{ env.VERSION }}/orgs/${{ env.OWNER }}/repos' \
             -d '{"name":"${{ env.REPO_NAME }}"}'
           fi

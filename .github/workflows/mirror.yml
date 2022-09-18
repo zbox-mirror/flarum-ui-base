@@ -21,7 +21,7 @@ jobs:
       - name: "Get repository name"
         shell: bash
         run: |
-          echo "repo_name=$( echo '${{ github.repository }}' | awk -F '/' '{ print $2 }' )" >> $GITHUB_ENV
+          echo "REPO_NAME=$( echo '${{ github.repository }}' | awk -F '/' '{ print $2 }' )" >> $GITHUB_ENV
       - name: "Create repository"
         shell: bash
         run: |
@@ -59,7 +59,7 @@ jobs:
       - name: "Get repository name"
         shell: bash
         run: |
-          echo "repo_name=$( echo '${{ github.repository }}' | awk -F '/' '{ print $2 }' )" >> $GITHUB_ENV
+          echo "REPO_NAME=$( echo '${{ github.repository }}' | awk -F '/' '{ print $2 }' )" >> $GITHUB_ENV
       - name: "Create repository"
         shell: bash
         run: |
@@ -96,7 +96,7 @@ jobs:
       - name: "Get repository name"
         shell: bash
         run: |
-          echo "repo_name=$( echo '${{ github.repository }}' | awk -F '/' '{ print $2 }' )" >> $GITHUB_ENV
+          echo "REPO_NAME=$( echo '${{ github.repository }}' | awk -F '/' '{ print $2 }' )" >> $GITHUB_ENV
       - name: "Create repository"
         shell: bash
         run: |
